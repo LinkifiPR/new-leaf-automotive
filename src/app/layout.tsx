@@ -1,18 +1,5 @@
 import type { Metadata } from "next";
-import { Orbitron, Rajdhani } from "next/font/google";
 import "./globals.css";
-
-const orbitron = Orbitron({
-  subsets: ["latin"],
-  variable: "--font-display",
-  weight: ["600", "700", "800", "900"]
-});
-
-const rajdhani = Rajdhani({
-  subsets: ["latin"],
-  variable: "--font-body",
-  weight: ["400", "500", "600", "700"]
-});
 
 export const metadata: Metadata = {
   title: "New Leaf Automotive | Mobile VAG Diagnostics & Coding",
@@ -49,7 +36,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${orbitron.variable} ${rajdhani.variable}`}>{children}</body>
+      <body>{children}</body>
     </html>
   );
 }

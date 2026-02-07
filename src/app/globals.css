@@ -1,4 +1,7 @@
 :root {
+  --font-display: "Arial Black", "Franklin Gothic Heavy", "Impact",
+    "Haettenschweiler", "Arial Narrow Bold", sans-serif;
+  --font-body: "Trebuchet MS", "Segoe UI", "Tahoma", sans-serif;
   --bg: #05090c;
   --bg-soft: #0b161f;
   --surface: rgba(10, 21, 24, 0.82);
