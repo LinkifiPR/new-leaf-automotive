@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 const services = [
   {
@@ -57,7 +58,7 @@ export default function Home() {
         <div className="orb orb-a" />
         <div className="orb orb-b" />
         <header className="hero-top">
-          <a className="logo-wrap" href="/" aria-label="New Leaf Automotive home">
+          <Link className="logo-wrap" href="/" aria-label="New Leaf Automotive home">
             <Image
               src="/brand/logo.jpeg"
               alt="New Leaf Automotive logo"
@@ -65,7 +66,7 @@ export default function Home() {
               height={200}
               priority
             />
-          </a>
+          </Link>
           <a className="nav-cta" href="#book">
             Book Mobile Visit
           </a>
