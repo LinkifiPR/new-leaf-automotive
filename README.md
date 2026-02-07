@@ -22,15 +22,15 @@ git remote add origin https://github.com/<your-username>/new-leaf-automotive.git
 git push -u origin main
 ```
 
-## 3) Automatic deployments
+## 3) Automatic deployments (Netlify)
 
-Recommended: Vercel Git integration.
+1. In Netlify, select **Add new site** -> **Import an existing project**.
+2. Connect GitHub and choose this repository.
+3. Build command: `npm run build`
+4. Publish directory: `.next`
+5. Deploy.
 
-1. Create a project in Vercel and import this GitHub repo.
-2. Keep framework as **Next.js**.
-3. Deploy.
-
-After that, every push to `main` will auto-deploy. Pull requests can also get preview deployments.
+After that, every push to `main` will auto-deploy, and pull requests can have deploy previews.
 
 ## 4) Continuous integration
 
