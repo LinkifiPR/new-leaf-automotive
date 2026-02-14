@@ -158,7 +158,7 @@ export default function Home() {
             />
           </Link>
           <nav className="hero-nav" aria-label="Page sections">
-            <a href="#services">Services</a>
+            <Link href="/services">Services</Link>
             <a href="#work">Work</a>
             <a className="nav-cta" href="#book">
               Book Mobile Visit
@@ -207,6 +207,13 @@ export default function Home() {
         <div className="section-head">
           <p className="section-kicker">Service Menu</p>
           <h2>Transparent Pricing and Vehicle-Specific Support</h2>
+          <p className="section-subcopy">
+            Need a full breakdown? Visit the dedicated service pages for deeper
+            explanations and relevant galleries.
+          </p>
+          <Link className="section-inline-link" href="/services">
+            Open Service Pages
+          </Link>
         </div>
 
         <div className="service-grid service-grid-pricing">

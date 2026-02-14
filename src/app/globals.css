@@ -329,6 +329,295 @@ h1 {
   font-size: clamp(1.45rem, 3vw, 2.2rem);
 }
 
+.section-subcopy {
+  margin: 0.48rem 0 0;
+  max-width: 64ch;
+  color: #bdd2cc;
+  font-size: 0.95rem;
+}
+
+.section-inline-link {
+  display: inline-flex;
+  margin-top: 0.64rem;
+  text-decoration: none;
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-weight: 800;
+  color: #d7ffb3;
+  border: 1px solid rgba(163, 255, 106, 0.42);
+  border-radius: 999px;
+  padding: 0.38rem 0.66rem;
+  background: rgba(14, 31, 25, 0.78);
+}
+
+.section-inline-link:hover {
+  border-color: rgba(163, 255, 106, 0.75);
+  background: rgba(20, 45, 32, 0.82);
+}
+
+.servicehub-shell,
+.servicepage-shell {
+  width: min(1160px, 94vw);
+  margin: 0 auto;
+  padding: 1rem 0 3rem;
+}
+
+.servicehub-hero,
+.servicepage-hero {
+  border-radius: 24px;
+  border: 1px solid rgba(126, 255, 105, 0.2);
+  background: linear-gradient(
+    145deg,
+    rgba(5, 17, 14, 0.95) 0%,
+    rgba(7, 20, 22, 0.95) 100%
+  );
+  padding: 1.2rem;
+}
+
+.servicehub-kicker,
+.servicepage-kicker {
+  margin: 0;
+  color: #86ec95;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.74rem;
+  font-weight: 700;
+}
+
+.servicehub-hero h1,
+.servicepage-hero h1 {
+  margin-top: 0.44rem;
+  font-size: clamp(1.9rem, 4.4vw, 3.2rem);
+  line-height: 1.05;
+}
+
+.servicehub-hero p,
+.servicepage-hero p {
+  margin: 0.55rem 0 0;
+  color: #bfd2cc;
+  max-width: 68ch;
+}
+
+.servicehub-grid {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.8rem;
+}
+
+.servicehub-card {
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid rgba(126, 255, 105, 0.2);
+  background: rgba(8, 19, 21, 0.84);
+  box-shadow: var(--shadow);
+}
+
+.servicehub-image-wrap {
+  aspect-ratio: 16 / 10;
+}
+
+.servicehub-image-wrap img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.servicehub-content {
+  padding: 0.85rem;
+}
+
+.servicehub-content h2 {
+  font-size: 1.18rem;
+}
+
+.servicehub-strapline {
+  color: #d6ebdd;
+  font-weight: 700;
+}
+
+.servicehub-link {
+  display: inline-flex;
+  margin-top: 0.7rem;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: 0.78rem;
+  font-weight: 800;
+  border: 1px solid rgba(163, 255, 106, 0.45);
+  border-radius: 999px;
+  padding: 0.42rem 0.72rem;
+  background: rgba(15, 34, 27, 0.82);
+  color: #d8ffba;
+}
+
+.servicehub-link:hover {
+  border-color: rgba(163, 255, 106, 0.75);
+}
+
+.servicehub-back {
+  margin-top: 0.9rem;
+  text-align: center;
+}
+
+.servicehub-back a {
+  color: #d2e8e2;
+  font-size: 0.9rem;
+}
+
+.servicepage-strapline {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #d8ecd3;
+}
+
+.servicepage-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.58rem;
+  margin-top: 0.88rem;
+}
+
+.servicepage-main {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 0.8rem;
+}
+
+.servicepage-copy,
+.servicepage-pricing {
+  border-radius: 18px;
+  border: 1px solid rgba(126, 255, 105, 0.18);
+  background: rgba(8, 17, 20, 0.84);
+  padding: 1rem;
+}
+
+.servicepage-copy p {
+  color: #bdd2cc;
+  margin: 0.58rem 0 0;
+}
+
+.servicepage-copy h3,
+.servicepage-pricing h3 {
+  margin-top: 0.85rem;
+  font-size: 1rem;
+}
+
+.servicepage-copy ul {
+  margin: 0.5rem 0 0;
+  padding-left: 1rem;
+  color: #d5e7df;
+  display: grid;
+  gap: 0.45rem;
+}
+
+.servicepage-pricing-table {
+  margin-top: 0.65rem;
+  display: grid;
+  gap: 0.56rem;
+}
+
+.servicepage-price-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.6rem;
+  border-radius: 12px;
+  border: 1px solid rgba(163, 255, 106, 0.24);
+  background: rgba(13, 33, 27, 0.72);
+  padding: 0.65rem;
+}
+
+.servicepage-price-row h3 {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.servicepage-price-row p {
+  margin: 0.28rem 0 0;
+  font-size: 0.82rem;
+  color: #bed0cb;
+}
+
+.servicepage-price-row strong {
+  flex-shrink: 0;
+  border-radius: 999px;
+  border: 1px solid rgba(177, 255, 73, 0.44);
+  background: rgba(18, 40, 30, 0.9);
+  color: #ddffbf;
+  font-size: 0.78rem;
+  letter-spacing: 0.03em;
+  padding: 0.28rem 0.52rem;
+}
+
+.servicepage-coverage {
+  margin-top: 0.55rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.42rem;
+}
+
+.servicepage-coverage span {
+  border-radius: 999px;
+  border: 1px solid rgba(163, 255, 106, 0.35);
+  background: rgba(15, 31, 27, 0.84);
+  color: #d7f0d4;
+  font-size: 0.76rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0.3rem 0.52rem;
+}
+
+.servicepage-gallery {
+  margin-top: 0.9rem;
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 0.7rem;
+}
+
+.servicepage-gallery-card {
+  grid-column: span 4;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(163, 255, 106, 0.2);
+  background: rgba(8, 17, 20, 0.84);
+  box-shadow: var(--shadow);
+}
+
+.servicepage-gallery-card img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.servicepage-note {
+  margin-top: 0.86rem;
+  border-radius: 14px;
+  border: 1px solid rgba(124, 240, 130, 0.2);
+  background: rgba(9, 23, 23, 0.84);
+  padding: 0.76rem 0.92rem;
+}
+
+.servicepage-note p {
+  margin: 0;
+  color: #c2d7cf;
+  font-size: 0.9rem;
+}
+
+.servicepage-footer {
+  margin-top: 0.8rem;
+  text-align: center;
+}
+
+.servicepage-footer a {
+  color: #d2e8e2;
+  font-size: 0.9rem;
+}
+
 .service-grid {
   margin-top: 1rem;
   display: grid;
@@ -675,6 +964,10 @@ button:focus-visible {
   .service-grid-coming {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
+  .servicepage-gallery-card {
+    grid-column: span 6;
+  }
 }
 
 @media (max-width: 980px) {
@@ -690,6 +983,14 @@ button:focus-visible {
 
   .work-card {
     grid-column: span 6;
+  }
+
+  .servicehub-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .servicepage-main {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -739,6 +1040,22 @@ button:focus-visible {
   .work-card-tall {
     grid-column: span 12;
     grid-row: span 1;
+  }
+
+  .servicehub-shell,
+  .servicepage-shell {
+    width: min(100%, 94vw);
+  }
+
+  .servicehub-hero,
+  .servicepage-hero,
+  .servicepage-copy,
+  .servicepage-pricing {
+    padding: 0.9rem;
+  }
+
+  .servicepage-gallery-card {
+    grid-column: span 12;
   }
 }
 
