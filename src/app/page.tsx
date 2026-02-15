@@ -68,11 +68,23 @@ const highlights = [
 
 const supportedBrands = ["Volkswagen", "Audi", "SEAT", "Skoda"];
 
-const coverage = [
-  "Lincolnshire",
-  "Nottinghamshire",
-  "Derbyshire",
-  "South Yorkshire"
+const coverageAreas = [
+  {
+    county: "Lincolnshire",
+    focus: "Core service zone"
+  },
+  {
+    county: "Nottinghamshire",
+    focus: "Mobile visits available"
+  },
+  {
+    county: "Derbyshire",
+    focus: "Flexible appointment windows"
+  },
+  {
+    county: "South Yorkshire",
+    focus: "Booked route coverage"
+  }
 ];
 
 const diagnosticsGallery = [
@@ -133,7 +145,7 @@ const localBusinessJsonLd = {
   "@context": "https://schema.org",
   "@type": "AutomotiveBusiness",
   name: "New Leaf Automotive",
-  areaServed: coverage,
+  areaServed: coverageAreas.map((area) => area.county),
   description:
     "Mobile VAG diagnostics, coding, retrofit and inspection services across Lincolnshire, Nottinghamshire, Derbyshire, and South Yorkshire.",
   serviceType: serviceItems.map((item) => item.title),
@@ -237,9 +249,13 @@ export default function Home() {
         </div>
         <div className="coverage-layout">
           <div className="coverage-grid">
-            {coverage.map((county) => (
-              <article className="coverage-card" key={county}>
-                <h3>{county}</h3>
+            {coverageAreas.map((area) => (
+              <article className="coverage-card" key={area.county}>
+                <span className="coverage-card-dot" aria-hidden />
+                <div className="coverage-card-content">
+                  <p>{area.focus}</p>
+                  <h3>{area.county}</h3>
+                </div>
               </article>
             ))}
           </div>

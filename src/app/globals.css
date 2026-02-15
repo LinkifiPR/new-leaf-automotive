@@ -685,16 +685,17 @@ h1 {
 .coverage-grid {
   margin-top: 1rem;
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0.72rem;
+  align-content: start;
 }
 
 .coverage-layout {
   margin-top: 0.9rem;
   display: grid;
-  grid-template-columns: 0.88fr 1.12fr;
+  grid-template-columns: 0.82fr 1.18fr;
   gap: 0.75rem;
-  align-items: stretch;
+  align-items: start;
 }
 
 .coverage-map-wrap {
@@ -754,14 +755,62 @@ h1 {
 }
 
 .coverage-card {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
   border-radius: 13px;
   border: 1px solid rgba(163, 255, 106, 0.28);
-  background: rgba(12, 28, 27, 0.78);
-  padding: 0.85rem;
+  background: linear-gradient(
+    140deg,
+    rgba(12, 28, 27, 0.82),
+    rgba(9, 20, 22, 0.86)
+  );
+  padding: 0.76rem 0.8rem;
 }
 
-.coverage-card h3 {
-  font-size: 0.95rem;
+.coverage-card::after {
+  content: "";
+  position: absolute;
+  right: -24px;
+  top: -24px;
+  width: 82px;
+  height: 82px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(126, 255, 105, 0.14), transparent 72%);
+  pointer-events: none;
+}
+
+.coverage-card-dot {
+  flex-shrink: 0;
+  width: 13px;
+  height: 13px;
+  border-radius: 999px;
+  border: 1px solid rgba(158, 247, 54, 0.85);
+  background: radial-gradient(circle, rgba(158, 247, 54, 0.9), rgba(70, 192, 90, 0.78));
+  box-shadow: 0 0 0 3px rgba(126, 255, 105, 0.14);
+}
+
+.coverage-card-content {
+  min-width: 0;
+}
+
+.coverage-card-content p {
+  margin: 0;
+  color: #93c9a4;
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.coverage-card-content h3 {
+  margin-top: 0.24rem;
+  font-size: 1.03rem;
+  line-height: 1.12;
+  text-wrap: pretty;
+  overflow-wrap: anywhere;
 }
 
 .coverage-note {
