@@ -689,6 +689,70 @@ h1 {
   gap: 0.72rem;
 }
 
+.coverage-layout {
+  margin-top: 0.9rem;
+  display: grid;
+  grid-template-columns: 0.88fr 1.12fr;
+  gap: 0.75rem;
+  align-items: stretch;
+}
+
+.coverage-map-wrap {
+  border-radius: 14px;
+  border: 1px solid rgba(163, 255, 106, 0.3);
+  background: rgba(8, 18, 22, 0.84);
+  overflow: hidden;
+}
+
+.coverage-map {
+  width: 100%;
+  height: 320px;
+}
+
+.coverage-map-status {
+  margin: 0;
+  border-radius: 14px;
+  border: 1px solid rgba(163, 255, 106, 0.3);
+  background: rgba(8, 18, 22, 0.84);
+  color: #c4d9d1;
+  font-size: 0.9rem;
+  padding: 0.88rem;
+}
+
+.coverage-map-legend {
+  display: flex;
+  align-items: center;
+  gap: 0.48rem;
+  padding: 0.56rem 0.7rem;
+  border-top: 1px solid rgba(163, 255, 106, 0.2);
+  color: #d4e9e2;
+  font-size: 0.82rem;
+}
+
+.coverage-map-legend span {
+  width: 16px;
+  height: 12px;
+  border-radius: 999px;
+  border: 1px solid #8bff4d;
+  background: rgba(68, 226, 92, 0.26);
+}
+
+.coverage-map-tooltip {
+  border: 1px solid rgba(163, 255, 106, 0.48);
+  border-radius: 8px;
+  background: rgba(8, 24, 18, 0.94);
+  color: #e3ffd0;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  box-shadow: none;
+}
+
+.coverage-map-tooltip::before {
+  display: none;
+}
+
 .coverage-card {
   border-radius: 13px;
   border: 1px solid rgba(163, 255, 106, 0.28);
@@ -991,6 +1055,14 @@ button:focus-visible {
 
   .servicepage-main {
     grid-template-columns: 1fr;
+  }
+
+  .coverage-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .coverage-map {
+    height: 300px;
   }
 }
 

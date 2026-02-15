@@ -1,5 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
+import dynamic from "next/dynamic";
+
+const CoverageMap = dynamic(() => import("@/components/CoverageMap"), {
+  ssr: false
+});
 
 const serviceItems = [
   {
@@ -234,12 +239,15 @@ export default function Home() {
           <p className="section-kicker">Coverage</p>
           <h2>Serving Across Four Counties</h2>
         </div>
-        <div className="coverage-grid">
-          {coverage.map((county) => (
-            <article className="coverage-card" key={county}>
-              <h3>{county}</h3>
-            </article>
-          ))}
+        <div className="coverage-layout">
+          <div className="coverage-grid">
+            {coverage.map((county) => (
+              <article className="coverage-card" key={county}>
+                <h3>{county}</h3>
+              </article>
+            ))}
+          </div>
+          <CoverageMap />
         </div>
         <p className="coverage-note">
           Prices are subject to mileage costs to your location. Contact us for a
