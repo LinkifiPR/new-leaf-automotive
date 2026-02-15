@@ -1,0 +1,18 @@
+<svg width="320" height="160" viewBox="0 0 320 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="seatStroke" x1="42" y1="26" x2="278" y2="132" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#BAFF64"/>
+      <stop offset="1" stop-color="#35D974"/>
+    </linearGradient>
+    <radialGradient id="seatBg" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(160 80) rotate(90) scale(78 146)">
+      <stop stop-color="#102418"/>
+      <stop offset="1" stop-color="#070D12"/>
+    </radialGradient>
+  </defs>
+  <rect x="8" y="8" width="304" height="144" rx="16" fill="url(#seatBg)"/>
+  <path d="M114 47H210L194 62H130L114 47Z" stroke="url(#seatStroke)" stroke-width="6" fill="none" stroke-linejoin="round"/>
+  <path d="M124 68H202L186 83H140L124 68Z" stroke="url(#seatStroke)" stroke-width="6" fill="none" stroke-linejoin="round"/>
+  <path d="M114 90H210L194 105H130L114 90Z" stroke="url(#seatStroke)" stroke-width="6" fill="none" stroke-linejoin="round"/>
+  <text x="160" y="133" text-anchor="middle" fill="#D7FFB8" font-family="Arial, sans-serif" font-size="22" font-weight="700" letter-spacing="3">SEAT</text>
+  <rect x="8.5" y="8.5" width="303" height="143" rx="15.5" stroke="#8DFF4F" stroke-opacity="0.28"/>
+</svg>

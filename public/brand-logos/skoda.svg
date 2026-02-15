@@ -1,0 +1,18 @@
+<svg width="320" height="160" viewBox="0 0 320 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="skodaStroke" x1="34" y1="20" x2="286" y2="140" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#BAFF64"/>
+      <stop offset="1" stop-color="#35D974"/>
+    </linearGradient>
+    <radialGradient id="skodaBg" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(160 80) rotate(90) scale(78 146)">
+      <stop stop-color="#102418"/>
+      <stop offset="1" stop-color="#070D12"/>
+    </radialGradient>
+  </defs>
+  <rect x="8" y="8" width="304" height="144" rx="16" fill="url(#skodaBg)"/>
+  <circle cx="160" cy="68" r="34" stroke="url(#skodaStroke)" stroke-width="6"/>
+  <path d="M144 67L171 52L165 67L182 69L151 87L157 73L141 72L144 67Z" fill="url(#skodaStroke)"/>
+  <path d="M168 43L176 50L166 54" stroke="url(#skodaStroke)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="160" y="133" text-anchor="middle" fill="#D7FFB8" font-family="Arial, sans-serif" font-size="20" font-weight="700" letter-spacing="2">SKODA</text>
+  <rect x="8.5" y="8.5" width="303" height="143" rx="15.5" stroke="#8DFF4F" stroke-opacity="0.28"/>
+</svg>

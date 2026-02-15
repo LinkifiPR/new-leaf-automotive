@@ -66,7 +66,32 @@ const highlights = [
   "Quotes can include mileage/travel"
 ];
 
-const supportedBrands = ["Volkswagen", "Audi", "SEAT", "Skoda"];
+const supportedBrands = [
+  {
+    id: "vw",
+    name: "Volkswagen",
+    logo: "/brand-logos/volkswagen.png",
+    strapline: "VW diagnostics, coding and retrofit support."
+  },
+  {
+    id: "audi",
+    name: "Audi",
+    logo: "/brand-logos/audi.png",
+    strapline: "Module coding and fault tracing for Audi platforms."
+  },
+  {
+    id: "seat",
+    name: "SEAT",
+    logo: "/brand-logos/seat.svg",
+    strapline: "Mobile coding and retrofit work for SEAT vehicles."
+  },
+  {
+    id: "skoda",
+    name: "Skoda",
+    logo: "/brand-logos/skoda.avif",
+    strapline: "Skoda diagnostics and adaptation support."
+  }
+];
 
 const coverageAreas = [
   {
@@ -149,7 +174,7 @@ const localBusinessJsonLd = {
   description:
     "Mobile VAG diagnostics, coding, retrofit and inspection services across Lincolnshire, Nottinghamshire, Derbyshire, and South Yorkshire.",
   serviceType: serviceItems.map((item) => item.title),
-  brand: supportedBrands
+  brand: supportedBrands.map((brand) => brand.name)
 };
 
 export default function Home() {
@@ -268,9 +293,28 @@ export default function Home() {
       </section>
 
       <section className="brand-strip" aria-label="Supported brands">
-        {supportedBrands.map((brand) => (
-          <span key={brand}>{brand}</span>
-        ))}
+        <div className="brand-strip-head">
+          <p className="section-kicker">Supported Marques</p>
+          <h2>Volkswagen Group Vehicle Specialists</h2>
+        </div>
+        <div className="brand-grid">
+          {supportedBrands.map((brand) => (
+            <article className={`brand-card brand-card-${brand.id}`} key={brand.name}>
+              <div className="brand-card-glow" aria-hidden />
+              <div className="brand-logo-wrap">
+                <Image
+                  src={brand.logo}
+                  alt={`${brand.name} logo`}
+                  width={480}
+                  height={220}
+                  className="brand-logo-image"
+                />
+              </div>
+              <h3>{brand.name}</h3>
+              <p>{brand.strapline}</p>
+            </article>
+          ))}
+        </div>
       </section>
 
       <section className="work-section" id="work" aria-label="Recent diagnostics, coding, and retrofit work">
