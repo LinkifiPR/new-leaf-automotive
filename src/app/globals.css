@@ -45,6 +45,27 @@ h3 {
   text-wrap: balance;
 }
 
+.site-header {
+  width: min(1240px, 94vw);
+  margin: 0.85rem auto 0;
+  border-radius: 18px;
+  border: 1px solid rgba(136, 250, 100, 0.2);
+  background: linear-gradient(
+    145deg,
+    rgba(7, 16, 19, 0.94) 0%,
+    rgba(8, 25, 19, 0.9) 100%
+  );
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.28);
+}
+
+.site-header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.56rem 0.66rem;
+}
+
 .home-shell {
   width: min(1240px, 94vw);
   margin: 0 auto;
@@ -175,7 +196,7 @@ h3 {
   display: grid;
   grid-template-columns: 1.22fr 0.78fr;
   gap: 1.1rem;
-  margin-top: 1.1rem;
+  margin-top: 0.4rem;
 }
 
 .eyebrow {
@@ -1538,6 +1559,16 @@ button:focus-visible {
 }
 
 @media (max-width: 700px) {
+  .site-header {
+    margin-top: 0.64rem;
+  }
+
+  .site-header-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.56rem;
+  }
+
   .home-shell {
     width: min(100%, 94vw);
   }
@@ -1553,7 +1584,7 @@ button:focus-visible {
   }
 
   .hero-nav {
-    justify-content: flex-end;
+    justify-content: flex-start;
   }
 
   .hero-nav a {

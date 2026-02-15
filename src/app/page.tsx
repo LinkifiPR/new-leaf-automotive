@@ -243,25 +243,6 @@ export default function Home() {
         <div className="orb orb-a" />
         <div className="orb orb-b" />
 
-        <header className="hero-top">
-          <Link className="logo-wrap" href="/" aria-label="New Leaf Automotive home">
-            <Image
-              src="/brand/logo.jpeg"
-              alt="New Leaf Automotive logo"
-              width={200}
-              height={200}
-              priority
-            />
-          </Link>
-          <nav className="hero-nav" aria-label="Page sections">
-            <Link href="/services">Services</Link>
-            <a href="#work">Work</a>
-            <a className="nav-cta" href="#book">
-              Book Mobile Visit
-            </a>
-          </nav>
-        </header>
-
         <div className="hero-main">
           <div>
             <p className="eyebrow">Mobile VWAG Specialists</p>
