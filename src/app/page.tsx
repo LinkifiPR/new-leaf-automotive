@@ -70,25 +70,25 @@ const supportedBrands = [
   {
     id: "vw",
     name: "Volkswagen",
-    logo: "/brand-logos/volkswagen.png",
+    logo: "/brand-logos/volkswagen-10-logo-png-transparent.png",
     strapline: "VW diagnostics, coding and retrofit support."
   },
   {
     id: "audi",
     name: "Audi",
-    logo: "/brand-logos/audi.png",
+    logo: "/brand-logos/Audi-Logo.png",
     strapline: "Module coding and fault tracing for Audi platforms."
   },
   {
     id: "seat",
     name: "SEAT",
-    logo: "/brand-logos/seat.svg",
+    logo: "/brand-logos/SEAT-Logo.png",
     strapline: "Mobile coding and retrofit work for SEAT vehicles."
   },
   {
     id: "skoda",
     name: "Skoda",
-    logo: "/brand-logos/skoda.avif",
+    logo: "/brand-logos/Skoda-logo-icon-on-transparent-background-PNG.avif",
     strapline: "Skoda diagnostics and adaptation support."
   }
 ];
@@ -301,14 +301,17 @@ export default function Home() {
           {supportedBrands.map((brand) => (
             <article className={`brand-card brand-card-${brand.id}`} key={brand.name}>
               <div className="brand-card-glow" aria-hidden />
-              <div className="brand-logo-wrap">
-                <Image
-                  src={brand.logo}
-                  alt={`${brand.name} logo`}
-                  width={480}
-                  height={220}
-                  className="brand-logo-image"
-                />
+              <div className={`brand-logo-wrap brand-logo-wrap-${brand.id}`}>
+                <div className="brand-logo-core">
+                  <Image
+                    src={brand.logo}
+                    alt={`${brand.name} logo`}
+                    width={480}
+                    height={220}
+                    className={`brand-logo-image brand-logo-image-${brand.id}`}
+                    sizes="(max-width: 700px) 80vw, (max-width: 1120px) 42vw, 22vw"
+                  />
+                </div>
               </div>
               <h3>{brand.name}</h3>
               <p>{brand.strapline}</p>

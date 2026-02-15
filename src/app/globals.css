@@ -900,6 +900,7 @@ h1 {
 
 .brand-logo-wrap {
   position: relative;
+  isolation: isolate;
   border-radius: 12px;
   border: 1px solid rgba(163, 255, 106, 0.2);
   background: linear-gradient(
@@ -907,19 +908,116 @@ h1 {
     rgba(4, 10, 14, 0.95) 0%,
     rgba(10, 22, 20, 0.95) 100%
   );
-  min-height: 92px;
+  min-height: 114px;
   display: grid;
   place-items: center;
-  padding: 0.3rem;
+  padding: 0.42rem;
+}
+
+.brand-logo-wrap::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+      circle at 50% 35%,
+      rgba(124, 253, 93, 0.16),
+      transparent 60%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(116, 255, 110, 0.1) 0%,
+      rgba(0, 0, 0, 0) 56%
+    );
+  pointer-events: none;
+}
+
+.brand-logo-core {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
 }
 
 .brand-logo-image {
   display: block;
   width: 100%;
-  max-width: 190px;
-  height: 70px;
+  max-width: 210px;
+  height: 86px;
   object-fit: contain;
-  filter: drop-shadow(0 0 14px rgba(141, 255, 79, 0.26));
+  filter: drop-shadow(0 0 16px rgba(141, 255, 79, 0.22));
+  transition: filter 0.24s ease, transform 0.24s ease;
+}
+
+.brand-card:hover .brand-logo-image {
+  transform: translateY(-1px) scale(1.02);
+  filter: drop-shadow(0 0 20px rgba(155, 255, 94, 0.36));
+}
+
+.brand-logo-wrap-vw .brand-logo-core,
+.brand-logo-wrap-skoda .brand-logo-core {
+  width: 122px;
+  height: 122px;
+  border-radius: 999px;
+  border: 1px solid rgba(177, 255, 103, 0.36);
+  background: radial-gradient(
+    circle at 38% 28%,
+    rgba(201, 253, 179, 0.18),
+    rgba(8, 18, 20, 0.98) 60%
+  );
+  box-shadow: inset 0 0 0 1px rgba(76, 195, 95, 0.22);
+}
+
+.brand-logo-wrap-audi .brand-logo-core {
+  width: min(94%, 248px);
+  height: 84px;
+  border-radius: 999px;
+  border: 1px solid rgba(111, 255, 212, 0.3);
+  background: radial-gradient(
+    circle at 50% 40%,
+    rgba(108, 255, 200, 0.17),
+    rgba(6, 16, 17, 0.98) 70%
+  );
+}
+
+.brand-logo-wrap-seat .brand-logo-core {
+  width: 154px;
+  height: 100px;
+  border-radius: 16px;
+  border: 1px solid rgba(190, 255, 96, 0.34);
+  background: radial-gradient(
+    circle at 48% 30%,
+    rgba(182, 250, 128, 0.18),
+    rgba(7, 16, 19, 0.98) 70%
+  );
+}
+
+.brand-logo-image-vw {
+  width: 108px;
+  height: 108px;
+}
+
+.brand-logo-image-audi {
+  width: min(90%, 220px);
+  height: 72px;
+  filter: brightness(0) invert(1) sepia(35%) hue-rotate(72deg) saturate(370%)
+    brightness(1.12) drop-shadow(0 0 18px rgba(92, 255, 203, 0.28));
+}
+
+.brand-logo-image-seat {
+  width: 120px;
+  height: 84px;
+  filter: brightness(1.2) contrast(1.08) drop-shadow(0 0 16px rgba(173, 255, 106, 0.24));
+}
+
+.brand-logo-image-skoda {
+  width: 104px;
+  height: 104px;
+  border-radius: 999px;
+  object-fit: cover;
+  mix-blend-mode: multiply;
+  filter: saturate(1.2) contrast(1.07) drop-shadow(0 0 16px rgba(171, 255, 99, 0.3));
 }
 
 .brand-card h3 {
