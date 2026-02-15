@@ -29,6 +29,16 @@ export default function ServicesIndexPage() {
               <h2>{service.title}</h2>
               <p className="servicehub-strapline">{service.strapline}</p>
               <p>{service.summary}</p>
+              <div className="servicehub-prices" aria-label={`${service.title} pricing highlights`}>
+                {service.priceRows.slice(0, 2).map((row) => (
+                  <span key={`${service.slug}-${row.item}`}>{`${row.item}: ${row.price}`}</span>
+                ))}
+              </div>
+              <ul className="servicehub-points">
+                {service.keyPoints.slice(0, 2).map((point) => (
+                  <li key={`${service.slug}-${point}`}>{point}</li>
+                ))}
+              </ul>
               <Link className="servicehub-link" href={`/services/${service.slug}`}>
                 Open {service.title}
               </Link>

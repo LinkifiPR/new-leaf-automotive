@@ -161,6 +161,64 @@ const codingGallery = {
   height: 1378
 };
 
+const workExamples = [
+  {
+    id: "diag-scan",
+    image: diagnosticsGallery[0],
+    category: "Diagnostics",
+    detail: "Full module health scan",
+    cardClass: "work-card-large"
+  },
+  {
+    id: "diag-column",
+    image: diagnosticsGallery[1],
+    category: "Diagnostics",
+    detail: "Steering column fault trace"
+  },
+  {
+    id: "retro-camera",
+    image: retrofitsGallery[0],
+    category: "Retrofits",
+    detail: "Reverse camera integration"
+  },
+  {
+    id: "diag-module",
+    image: diagnosticsGallery[2],
+    category: "Diagnostics",
+    detail: "Steering module inspection"
+  },
+  {
+    id: "retro-install",
+    image: retrofitsGallery[1],
+    category: "Retrofits",
+    detail: "Dash strip-down and install prep"
+  },
+  {
+    id: "coding-assist",
+    image: codingGallery,
+    category: "Coding",
+    detail: "Driver assist coding session",
+    cardClass: "work-card-tall"
+  },
+  {
+    id: "diag-abs",
+    image: diagnosticsGallery[3],
+    category: "Diagnostics",
+    detail: "ABS and control module review"
+  },
+  {
+    id: "overview",
+    image: {
+      src: "/brand/service-overview.jpg",
+      alt: "Overview visual of New Leaf Automotive services",
+      width: 1536,
+      height: 1024
+    },
+    category: "Service Coverage",
+    detail: "Mobile VWAG specialist support"
+  }
+];
+
 const socialLinks = {
   facebook: "https://www.facebook.com/profile.php?id=61585919633010",
   linkedin: "https://www.linkedin.com/company/new-leaf-automotive/"
@@ -327,80 +385,23 @@ export default function Home() {
         </div>
 
         <div className="work-mosaic">
-          <article className="work-card work-card-large">
-            <Image
-              src={diagnosticsGallery[0].src}
-              alt={diagnosticsGallery[0].alt}
-              width={diagnosticsGallery[0].width}
-              height={diagnosticsGallery[0].height}
-            />
-            <div className="work-label">Diagnostics</div>
-          </article>
-
-          <article className="work-card">
-            <Image
-              src={diagnosticsGallery[1].src}
-              alt={diagnosticsGallery[1].alt}
-              width={diagnosticsGallery[1].width}
-              height={diagnosticsGallery[1].height}
-            />
-          </article>
-
-          <article className="work-card">
-            <Image
-              src={retrofitsGallery[0].src}
-              alt={retrofitsGallery[0].alt}
-              width={retrofitsGallery[0].width}
-              height={retrofitsGallery[0].height}
-            />
-            <div className="work-label">Retrofits</div>
-          </article>
-
-          <article className="work-card">
-            <Image
-              src={diagnosticsGallery[2].src}
-              alt={diagnosticsGallery[2].alt}
-              width={diagnosticsGallery[2].width}
-              height={diagnosticsGallery[2].height}
-            />
-          </article>
-
-          <article className="work-card">
-            <Image
-              src={retrofitsGallery[1].src}
-              alt={retrofitsGallery[1].alt}
-              width={retrofitsGallery[1].width}
-              height={retrofitsGallery[1].height}
-            />
-          </article>
-
-          <article className="work-card work-card-tall">
-            <Image
-              src={codingGallery.src}
-              alt={codingGallery.alt}
-              width={codingGallery.width}
-              height={codingGallery.height}
-            />
-            <div className="work-label">Coding</div>
-          </article>
-
-          <article className="work-card">
-            <Image
-              src={diagnosticsGallery[3].src}
-              alt={diagnosticsGallery[3].alt}
-              width={diagnosticsGallery[3].width}
-              height={diagnosticsGallery[3].height}
-            />
-          </article>
-
-          <article className="work-card">
-            <Image
-              src="/brand/service-overview.jpg"
-              alt="Overview visual of New Leaf Automotive services"
-              width={1536}
-              height={1024}
-            />
-          </article>
+          {workExamples.map((example) => (
+            <article
+              className={`work-card ${example.cardClass ?? ""}`}
+              key={example.id}
+            >
+              <Image
+                src={example.image.src}
+                alt={example.image.alt}
+                width={example.image.width}
+                height={example.image.height}
+              />
+              <div className="work-overlay">
+                <span className="work-chip">{example.category}</span>
+                <p>{example.detail}</p>
+              </div>
+            </article>
+          ))}
         </div>
       </section>
 

@@ -438,6 +438,33 @@ h1 {
   font-weight: 700;
 }
 
+.servicehub-prices {
+  margin-top: 0.58rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.38rem;
+}
+
+.servicehub-prices span {
+  border-radius: 999px;
+  border: 1px solid rgba(163, 255, 106, 0.32);
+  background: rgba(14, 31, 25, 0.82);
+  color: #dff7cf;
+  font-size: 0.71rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  padding: 0.26rem 0.5rem;
+}
+
+.servicehub-points {
+  margin: 0.56rem 0 0;
+  padding-left: 1rem;
+  color: #c4d8d2;
+  font-size: 0.86rem;
+  display: grid;
+  gap: 0.34rem;
+}
+
 .servicehub-link {
   display: inline-flex;
   margin-top: 0.7rem;
@@ -471,6 +498,20 @@ h1 {
   font-size: 1.05rem;
   font-weight: 700;
   color: #d8ecd3;
+}
+
+.servicepage-canonical-note {
+  margin-top: 0.66rem;
+  border-radius: 12px;
+  border: 1px solid rgba(163, 255, 106, 0.28);
+  background: rgba(11, 27, 24, 0.78);
+  padding: 0.54rem 0.68rem;
+  color: #cfe6de;
+  font-size: 0.86rem;
+}
+
+.servicepage-canonical-note a {
+  color: #d9ffb6;
 }
 
 .servicepage-actions {
@@ -579,6 +620,7 @@ h1 {
 }
 
 .servicepage-gallery-card {
+  position: relative;
   grid-column: span 4;
   border-radius: 16px;
   overflow: hidden;
@@ -592,6 +634,140 @@ h1 {
   height: 100%;
   display: block;
   object-fit: cover;
+}
+
+.servicepage-gallery-overlay {
+  position: absolute;
+  left: 0.52rem;
+  right: 0.52rem;
+  bottom: 0.52rem;
+  z-index: 2;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.33rem 0.46rem;
+}
+
+.servicepage-gallery-overlay span {
+  border-radius: 999px;
+  border: 1px solid rgba(177, 255, 73, 0.5);
+  background: rgba(18, 40, 30, 0.88);
+  color: #dbffbc;
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.44rem;
+}
+
+.servicepage-gallery-overlay p {
+  margin: 0;
+  color: #e1f0ea;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+}
+
+.servicepage-detail-grid {
+  margin-top: 0.85rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.7rem;
+}
+
+.servicepage-detail-card {
+  border-radius: 16px;
+  border: 1px solid rgba(126, 255, 105, 0.2);
+  background: rgba(8, 17, 20, 0.84);
+  padding: 0.92rem;
+}
+
+.servicepage-detail-card h2 {
+  font-size: 1.04rem;
+}
+
+.servicepage-detail-card ul {
+  margin: 0.55rem 0 0;
+  padding-left: 1rem;
+  color: #d5e7df;
+  display: grid;
+  gap: 0.45rem;
+}
+
+.servicepage-detail-card ol {
+  margin: 0.6rem 0 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: service-step;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.servicepage-detail-card ol li {
+  counter-increment: service-step;
+  border-radius: 12px;
+  border: 1px solid rgba(163, 255, 106, 0.2);
+  background: rgba(11, 29, 25, 0.74);
+  padding: 0.58rem 0.62rem;
+}
+
+.servicepage-detail-card ol li h3 {
+  margin: 0;
+  font-size: 0.88rem;
+}
+
+.servicepage-detail-card ol li h3::before {
+  content: counter(service-step) ". ";
+  color: #a8ff69;
+}
+
+.servicepage-detail-card ol li p {
+  margin: 0.32rem 0 0;
+  color: #bfd2cc;
+  font-size: 0.84rem;
+}
+
+.servicepage-faq {
+  margin-top: 0.85rem;
+  border-radius: 16px;
+  border: 1px solid rgba(126, 255, 105, 0.2);
+  background: rgba(8, 17, 20, 0.84);
+  padding: 0.95rem;
+}
+
+.servicepage-faq h2 {
+  font-size: 1.1rem;
+}
+
+.servicepage-faq-list {
+  margin-top: 0.62rem;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.servicepage-faq-list details {
+  border-radius: 12px;
+  border: 1px solid rgba(163, 255, 106, 0.2);
+  background: rgba(11, 29, 25, 0.74);
+  padding: 0.56rem 0.62rem;
+}
+
+.servicepage-faq-list summary {
+  cursor: pointer;
+  list-style: none;
+  color: #dcf1e8;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.servicepage-faq-list summary::-webkit-details-marker {
+  display: none;
+}
+
+.servicepage-faq-list p {
+  margin: 0.48rem 0 0;
+  color: #bfd2cc;
+  font-size: 0.86rem;
 }
 
 .servicepage-note {
@@ -1083,6 +1259,7 @@ h1 {
   height: 100%;
   object-fit: cover;
   display: block;
+  transition: transform 0.3s ease;
 }
 
 .work-card::after {
@@ -1103,20 +1280,40 @@ h1 {
   border-color: rgba(158, 247, 54, 0.62);
 }
 
-.work-label {
+.work-card:hover img {
+  transform: scale(1.03);
+}
+
+.work-overlay {
   position: absolute;
-  left: 0.6rem;
-  bottom: 0.6rem;
+  left: 0.58rem;
+  right: 0.58rem;
+  bottom: 0.58rem;
   z-index: 2;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.34rem 0.46rem;
+}
+
+.work-chip {
   border-radius: 999px;
   border: 1px solid rgba(179, 255, 103, 0.52);
   background: rgba(11, 34, 24, 0.9);
   color: #dfffc0;
-  font-size: 0.74rem;
+  font-size: 0.65rem;
   letter-spacing: 0.05em;
   text-transform: uppercase;
   font-weight: 700;
-  padding: 0.28rem 0.56rem;
+  padding: 0.23rem 0.48rem;
+}
+
+.work-overlay p {
+  margin: 0;
+  color: #e1f0ea;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
 }
 
 .booking-cta {
@@ -1323,6 +1520,10 @@ button:focus-visible {
     grid-template-columns: 1fr;
   }
 
+  .servicepage-detail-grid {
+    grid-template-columns: 1fr;
+  }
+
   .coverage-layout {
     grid-template-columns: 1fr;
   }
@@ -1396,7 +1597,9 @@ button:focus-visible {
   .servicehub-hero,
   .servicepage-hero,
   .servicepage-copy,
-  .servicepage-pricing {
+  .servicepage-pricing,
+  .servicepage-detail-card,
+  .servicepage-faq {
     padding: 0.9rem;
   }
 

@@ -2,20 +2,28 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getServiceBySlug, servicePages } from "@/data/services";
+import {
+  getAllServiceSlugs,
+  getServiceBySlug
+} from "@/data/services";
 
 type ServicePageProps = {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 };
 
+export const dynamicParams = false;
+
 export function generateStaticParams() {
-  return servicePages.map((service) => ({ slug: service.slug }));
+  return getAllServiceSlugs().map((slug) => ({ slug }));
 }
 
-export function generateMetadata({ params }: ServicePageProps): Metadata {
-  const service = getServiceBySlug(params.slug);
+export async function generateMetadata({
+  params
+}: ServicePageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const service = getServiceBySlug(slug);
 
   if (!service) {
     return {
@@ -29,12 +37,15 @@ export function generateMetadata({ params }: ServicePageProps): Metadata {
   };
 }
 
-export default function ServiceDetailPage({ params }: ServicePageProps) {
-  const service = getServiceBySlug(params.slug);
+export default async function ServiceDetailPage({ params }: ServicePageProps) {
+  const { slug } = await params;
+  const service = getServiceBySlug(slug);
 
   if (!service) {
     notFound();
   }
+
+  const isAliasPath = slug !== service.slug;
 
   return (
     <main className="servicepage-shell">
@@ -43,6 +54,13 @@ export default function ServiceDetailPage({ params }: ServicePageProps) {
         <h1>{service.title}</h1>
         <p className="servicepage-strapline">{service.strapline}</p>
         <p>{service.summary}</p>
+
+        {isAliasPath ? (
+          <p className="servicepage-canonical-note">
+            You are viewing this page via an older link. Canonical URL: {" "}
+            <Link href={`/services/${service.slug}`}>{`/services/${service.slug}`}</Link>
+          </p>
+        ) : null}
 
         <div className="servicepage-actions">
           <a
@@ -97,6 +115,29 @@ export default function ServiceDetailPage({ params }: ServicePageProps) {
         </aside>
       </section>
 
+      <section className="servicepage-detail-grid" aria-label="Service details">
+        <article className="servicepage-detail-card">
+          <h2>Ideal For</h2>
+          <ul>
+            {service.idealFor.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        </article>
+
+        <article className="servicepage-detail-card">
+          <h2>Booking Flow</h2>
+          <ol>
+            {service.processSteps.map((step) => (
+              <li key={step.title}>
+                <h3>{step.title}</h3>
+                <p>{step.detail}</p>
+              </li>
+            ))}
+          </ol>
+        </article>
+      </section>
+
       <section className="servicepage-gallery" aria-label="Service gallery">
         {service.images.map((image, index) => (
           <article className="servicepage-gallery-card" key={image.src}>
@@ -107,8 +148,24 @@ export default function ServiceDetailPage({ params }: ServicePageProps) {
               height={image.height}
               priority={index === 0}
             />
+            <div className="servicepage-gallery-overlay">
+              {image.tag ? <span>{image.tag}</span> : null}
+              <p>{image.alt}</p>
+            </div>
           </article>
         ))}
+      </section>
+
+      <section className="servicepage-faq" aria-label="Frequently asked questions">
+        <h2>Frequently Asked Questions</h2>
+        <div className="servicepage-faq-list">
+          {service.faqs.map((faq) => (
+            <details key={faq.question}>
+              <summary>{faq.question}</summary>
+              <p>{faq.answer}</p>
+            </details>
+          ))}
+        </div>
       </section>
 
       <section className="servicepage-note">
@@ -116,8 +173,25 @@ export default function ServiceDetailPage({ params }: ServicePageProps) {
       </section>
 
       <footer className="servicepage-footer">
+        <Link href="/services">Back to all services</Link>
+        <span aria-hidden> | </span>
         <Link href="/">Back to homepage</Link>
       </footer>
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Service",
+            name: service.title,
+            provider: "New Leaf Automotive",
+            areaServed: service.coverage,
+            serviceType: service.title,
+            description: service.summary
+          })
+        }}
+      />
     </main>
   );
 }
