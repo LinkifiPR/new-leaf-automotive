@@ -1,108 +1,109 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo } from "react";
 import L from "leaflet";
-import {
-  GeoJSON,
-  MapContainer,
-  TileLayer,
-  useMap
-} from "react-leaflet";
-import { feature as topojsonFeature } from "topojson-client";
+import { GeoJSON, MapContainer, TileLayer, useMap } from "react-leaflet";
 import type {
   Feature,
   FeatureCollection,
-  Geometry,
-  GeoJsonProperties
+  GeoJsonObject,
+  Polygon
 } from "geojson";
 
-type CountyFeature = Feature<Geometry, GeoJsonProperties>;
+type CountyProperties = { name: string };
+type CountyFeature = Feature<Polygon, CountyProperties>;
 
-const TARGET_COUNTIES = [
-  "lincolnshire",
-  "nottinghamshire",
-  "derbyshire",
-  "south yorkshire"
-];
-
-const SOURCE_URL =
-  "https://martinjc.github.io/UK-GeoJSON/json/administrative/eng/ctyua.json";
-
-function normalize(value: string) {
-  return value.trim().toLowerCase().replace(/\s+/g, " ");
-}
-
-function countyNameFromProperties(properties: GeoJsonProperties): string | null {
-  if (!properties) {
-    return null;
-  }
-
-  for (const value of Object.values(properties)) {
-    if (typeof value !== "string") {
-      continue;
+const COUNTY_FEATURES: FeatureCollection<Polygon, CountyProperties> = {
+  type: "FeatureCollection",
+  features: [
+    {
+      type: "Feature",
+      properties: { name: "Lincolnshire" },
+      geometry: {
+        type: "Polygon",
+        coordinates: [
+          [
+            [-1.05, 53.2],
+            [-0.95, 53.62],
+            [-0.33, 53.84],
+            [0.6, 53.45],
+            [0.4, 53.06],
+            [0.3, 52.7],
+            [-0.1, 52.5],
+            [-0.8, 52.53],
+            [-1.0, 52.85],
+            [-1.05, 53.2]
+          ]
+        ]
+      }
+    },
+    {
+      type: "Feature",
+      properties: { name: "Nottinghamshire" },
+      geometry: {
+        type: "Polygon",
+        coordinates: [
+          [
+            [-1.5, 53.07],
+            [-1.5, 53.32],
+            [-1.3, 53.5],
+            [-0.84, 53.48],
+            [-0.72, 53.3],
+            [-0.74, 52.89],
+            [-0.95, 52.83],
+            [-1.27, 52.87],
+            [-1.5, 53.07]
+          ]
+        ]
+      }
+    },
+    {
+      type: "Feature",
+      properties: { name: "Derbyshire" },
+      geometry: {
+        type: "Polygon",
+        coordinates: [
+          [
+            [-2.3, 53.37],
+            [-2.0, 53.62],
+            [-1.55, 53.66],
+            [-1.22, 53.45],
+            [-1.33, 53.12],
+            [-1.59, 52.93],
+            [-1.9, 52.92],
+            [-2.18, 53.11],
+            [-2.3, 53.37]
+          ]
+        ]
+      }
+    },
+    {
+      type: "Feature",
+      properties: { name: "South Yorkshire" },
+      geometry: {
+        type: "Polygon",
+        coordinates: [
+          [
+            [-1.73, 53.7],
+            [-1.31, 53.7],
+            [-1.03, 53.52],
+            [-1.07, 53.34],
+            [-1.27, 53.28],
+            [-1.59, 53.31],
+            [-1.79, 53.44],
+            [-1.73, 53.7]
+          ]
+        ]
+      }
     }
+  ]
+};
 
-    const normalized = normalize(value);
-
-    if (TARGET_COUNTIES.includes(normalized)) {
-      return normalized;
-    }
-  }
-
-  return null;
-}
-
-function ensureFeatureCollection(input: unknown): FeatureCollection {
-  if (!input || typeof input !== "object") {
-    return {
-      type: "FeatureCollection",
-      features: []
-    };
-  }
-
-  const obj = input as Record<string, unknown>;
-
-  if (obj.type === "FeatureCollection" && Array.isArray(obj.features)) {
-    return obj as unknown as FeatureCollection;
-  }
-
-  if (obj.type === "Topology" && obj.objects && typeof obj.objects === "object") {
-    const objects = obj.objects as Record<string, unknown>;
-    const firstObjectKey = Object.keys(objects)[0];
-
-    if (!firstObjectKey) {
-      return {
-        type: "FeatureCollection",
-        features: []
-      };
-    }
-
-    const topology = obj as unknown as Parameters<typeof topojsonFeature>[0];
-    const topologyObject = objects[
-      firstObjectKey
-    ] as unknown as Parameters<typeof topojsonFeature>[1];
-
-    const converted = topojsonFeature(topology, topologyObject) as
-      | FeatureCollection
-      | Feature;
-
-    if ("features" in converted) {
-      return converted;
-    }
-
-    return {
-      type: "FeatureCollection",
-      features: [converted]
-    };
-  }
-
-  return {
-    type: "FeatureCollection",
-    features: []
-  };
-}
-
-function FitBounds({ data }: { data: FeatureCollection }) {
+function FitBounds({
+  data
+}: {
+  data: FeatureCollection<Polygon, CountyProperties>;
+}) {
   const map = useMap();
 
   useEffect(() => {
@@ -110,7 +111,7 @@ function FitBounds({ data }: { data: FeatureCollection }) {
       return;
     }
 
-    const layer = L.geoJSON(data as unknown as GeoJSON.GeoJsonObject);
+    const layer = L.geoJSON(data as unknown as GeoJsonObject);
     const bounds = layer.getBounds();
 
     if (bounds.isValid()) {
@@ -125,53 +126,6 @@ function FitBounds({ data }: { data: FeatureCollection }) {
 }
 
 export default function CoverageMap() {
-  const [counties, setCounties] = useState<FeatureCollection | null>(null);
-  const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    let cancelled = false;
-
-    async function loadCountyData() {
-      try {
-        const response = await fetch(SOURCE_URL, {
-          cache: "force-cache"
-        });
-
-        if (!response.ok) {
-          throw new Error(`Boundary data request failed (${response.status}).`);
-        }
-
-        const raw = (await response.json()) as unknown;
-        const featureCollection = ensureFeatureCollection(raw);
-
-        const filteredFeatures = featureCollection.features.filter((feature) => {
-          return Boolean(countyNameFromProperties(feature.properties));
-        }) as CountyFeature[];
-
-        if (!cancelled) {
-          setCounties({
-            type: "FeatureCollection",
-            features: filteredFeatures
-          });
-        }
-      } catch (err) {
-        if (!cancelled) {
-          setError(
-            err instanceof Error
-              ? err.message
-              : "Unable to load coverage map data right now."
-          );
-        }
-      }
-    }
-
-    loadCountyData();
-
-    return () => {
-      cancelled = true;
-    };
-  }, []);
-
   const geoJsonStyle = useMemo(
     () => ({
       color: "#8bff4d",
@@ -185,18 +139,13 @@ export default function CoverageMap() {
   const onEachCounty = useMemo(
     () =>
       (feature: CountyFeature, layer: L.Layer) => {
-        const county = countyNameFromProperties(feature.properties);
+        const county = feature.properties?.name;
 
         if (!county || !(layer instanceof L.Path)) {
           return;
         }
 
-        const label = county
-          .split(" ")
-          .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
-          .join(" ");
-
-        layer.bindTooltip(label, {
+        layer.bindTooltip(county, {
           sticky: true,
           direction: "top",
           className: "coverage-map-tooltip"
@@ -219,14 +168,6 @@ export default function CoverageMap() {
     []
   );
 
-  if (error) {
-    return <p className="coverage-map-status">{error}</p>;
-  }
-
-  if (!counties) {
-    return <p className="coverage-map-status">Loading coverage map…</p>;
-  }
-
   return (
     <div className="coverage-map-wrap">
       <MapContainer
@@ -240,11 +181,11 @@ export default function CoverageMap() {
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
         />
         <GeoJSON
-          data={counties as unknown as GeoJSON.GeoJsonObject}
+          data={COUNTY_FEATURES as unknown as GeoJsonObject}
           style={geoJsonStyle}
           onEachFeature={onEachCounty}
         />
-        <FitBounds data={counties} />
+        <FitBounds data={COUNTY_FEATURES} />
       </MapContainer>
       <div className="coverage-map-legend">
         <span /> Service area counties
