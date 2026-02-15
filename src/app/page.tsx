@@ -1,10 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import dynamic from "next/dynamic";
-
-const CoverageMap = dynamic(() => import("@/components/CoverageMap"), {
-  ssr: false
-});
+import CoverageMap from "@/components/CoverageMap";
 
 const serviceItems = [
   {
