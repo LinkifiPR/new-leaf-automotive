@@ -240,6 +240,39 @@ const workExamples = [
   }
 ];
 
+const youtubeVideos = [
+  {
+    id: "DmYLue2oiXs",
+    title: "Workshop Video 01",
+    strapline: "Coding and VWAG feature changes in action."
+  },
+  {
+    id: "jqyonDGVrY4",
+    title: "Workshop Video 02",
+    strapline: "Hands-on diagnostics and real vehicle troubleshooting."
+  },
+  {
+    id: "GDWGlX58zyg",
+    title: "Workshop Video 03",
+    strapline: "Repair insight and practical on-car problem solving."
+  },
+  {
+    id: "H6BZmy_urJ4",
+    title: "Workshop Video 04",
+    strapline: "Real-world examples from mobile site visits."
+  },
+  {
+    id: "hWKNACwWnao",
+    title: "Workshop Video 05",
+    strapline: "Feature behaviour changes and coding workflow."
+  },
+  {
+    id: "AadAt68OD3c",
+    title: "Workshop Video 06",
+    strapline: "More behind-the-scenes clips from Ash's projects."
+  }
+];
+
 const socialLinks = {
   facebook: "https://www.facebook.com/profile.php?id=61585919633010",
   linkedin: "https://www.linkedin.com/company/new-leaf-automotive/"
@@ -401,6 +434,59 @@ export default function Home() {
               <div className="work-overlay">
                 <span className="work-chip">{example.category}</span>
                 <p>{example.detail}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="video-section" aria-label="Ash's YouTube videos">
+        <div className="section-head">
+          <p className="section-kicker">Watch Ash At Work</p>
+          <h2>Real Projects, Walkthroughs, and On-Car Problem Solving</h2>
+          <p className="section-subcopy">
+            A sharper look at diagnostics, coding, repair work, and the kind of
+            hands-on detail that sits behind New Leaf Automotive.
+          </p>
+        </div>
+
+        <div className="video-feature-grid">
+          {youtubeVideos.slice(0, 2).map((video) => (
+            <article className="video-feature-card" key={video.id}>
+              <div className="video-shell">
+                <iframe
+                  src={`https://www.youtube.com/embed/${video.id}`}
+                  title={video.title}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  allowFullScreen
+                  loading="lazy"
+                />
+              </div>
+              <div className="video-copy">
+                <p className="video-kicker">{video.title}</p>
+                <p>{video.strapline}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+
+        <div className="video-grid">
+          {youtubeVideos.slice(2).map((video) => (
+            <article className="video-card" key={video.id}>
+              <div className="video-shell video-shell-compact">
+                <iframe
+                  src={`https://www.youtube.com/embed/${video.id}`}
+                  title={video.title}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  allowFullScreen
+                  loading="lazy"
+                />
+              </div>
+              <div className="video-copy">
+                <p className="video-kicker">{video.title}</p>
+                <p>{video.strapline}</p>
               </div>
             </article>
           ))}

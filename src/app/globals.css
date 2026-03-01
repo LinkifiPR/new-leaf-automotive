@@ -132,6 +132,7 @@ h3 {
 .coverage-section,
 .brand-strip,
 .work-section,
+.video-section,
 .booking-cta,
 .disclaimer-strip,
 .site-footer {
@@ -320,7 +321,8 @@ h1 {
 
 .services-section,
 .coverage-section,
-.work-section {
+.work-section,
+.video-section {
   margin-top: 1.2rem;
   border-radius: 24px;
   padding: 1.38rem;
@@ -1619,6 +1621,103 @@ h1 {
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
 }
 
+.video-feature-grid {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.85rem;
+}
+
+.video-grid {
+  margin-top: 0.9rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.78rem;
+}
+
+.video-feature-card,
+.video-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 18px;
+  border: 1px solid rgba(163, 255, 106, 0.2);
+  background: linear-gradient(
+    155deg,
+    rgba(8, 18, 22, 0.92) 0%,
+    rgba(10, 30, 21, 0.88) 100%
+  );
+  box-shadow: var(--shadow);
+}
+
+.video-feature-card::before,
+.video-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto auto 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0),
+    rgba(163, 255, 106, 0.88),
+    rgba(0, 0, 0, 0)
+  );
+  opacity: 0.9;
+  pointer-events: none;
+}
+
+.video-shell {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  margin: 0.72rem;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(163, 255, 106, 0.22);
+  background: #071114;
+}
+
+.video-shell::after {
+  content: "";
+  position: absolute;
+  inset: auto -40px -40px auto;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(126, 255, 105, 0.18), transparent 68%);
+  pointer-events: none;
+}
+
+.video-shell iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+.video-shell-compact {
+  margin: 0.62rem 0.62rem 0;
+}
+
+.video-copy {
+  padding: 0 0.82rem 0.82rem;
+}
+
+.video-kicker {
+  margin: 0;
+  color: #d8ffba;
+  font-family: var(--font-display), sans-serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.video-copy p:last-child {
+  margin: 0.36rem 0 0;
+  color: #c3d9d1;
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
 .booking-cta {
   margin-top: 1.2rem;
   border-radius: 24px;
@@ -1682,6 +1781,7 @@ h1 {
 .coverage-section,
 .brand-strip,
 .work-section,
+.video-section,
 .work-card,
 .booking-cta,
 .disclaimer-strip {
@@ -1711,6 +1811,10 @@ h1 {
 
 .work-section {
   animation-delay: 0.38s;
+}
+
+.video-section {
+  animation-delay: 0.44s;
 }
 
 .work-card:nth-child(1) {
@@ -1746,11 +1850,11 @@ h1 {
 }
 
 .booking-cta {
-  animation-delay: 0.74s;
+  animation-delay: 0.8s;
 }
 
 .disclaimer-strip {
-  animation-delay: 0.78s;
+  animation-delay: 0.84s;
 }
 
 a:focus-visible,
@@ -1805,6 +1909,11 @@ button:focus-visible {
 
   .brand-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .video-feature-grid,
+  .video-grid {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -1909,6 +2018,7 @@ button:focus-visible {
   .services-section,
   .coverage-section,
   .work-section,
+  .video-section,
   .booking-cta {
     padding: 1.04rem;
   }
@@ -1962,6 +2072,7 @@ button:focus-visible {
   .coverage-section,
   .brand-strip,
   .work-section,
+  .video-section,
   .work-card,
   .booking-cta,
   .disclaimer-strip {
