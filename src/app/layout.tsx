@@ -55,6 +55,7 @@ export default function RootLayout({
             </Link>
             <nav className="hero-nav" aria-label="Primary navigation">
               <Link href="/">Home</Link>
+              <Link href="/about">About</Link>
               <Link href="/services">Services</Link>
               <Link href="/#work">Work</Link>
               <Link className="nav-cta" href="/#book">
