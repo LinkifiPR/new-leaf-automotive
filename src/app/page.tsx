@@ -1,5 +1,7 @@
+import { existsSync } from "fs";
 import Image from "next/image";
 import Link from "next/link";
+import { join } from "path";
 import CoverageMap from "@/components/CoverageMap";
 
 const serviceItems = [
@@ -154,12 +156,31 @@ const retrofitsGallery = [
   }
 ];
 
-const codingGallery = {
+function publicFileExists(...segments: string[]) {
+  return existsSync(join(process.cwd(), "public", ...segments));
+}
+
+const laneAssistCodingImage = {
+  src: "/gallery/coding/lane-assist-arteon-r-line.jpeg",
+  alt: "Lane assist off and standard cruise control coded on a 2023 Volkswagen Arteon R-Line",
+  width: 1365,
+  height: 2048
+};
+
+const defaultCodingImage = {
   src: "/gallery/coding/coding-driver-assist.jpeg",
   alt: "Driver assist coding workflow displayed on VCDS",
   width: 1079,
   height: 1378
 };
+
+const codingGallery = publicFileExists(
+  "gallery",
+  "coding",
+  "lane-assist-arteon-r-line.jpeg"
+)
+  ? laneAssistCodingImage
+  : defaultCodingImage;
 
 const workExamples = [
   {

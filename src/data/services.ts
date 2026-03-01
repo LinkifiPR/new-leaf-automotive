@@ -1,3 +1,6 @@
+import { existsSync } from "fs";
+import { join } from "path";
+
 export type ServiceImage = {
   src: string;
   alt: string;
@@ -45,6 +48,67 @@ const coverageAreas = [
   "Derbyshire",
   "South Yorkshire"
 ];
+
+function publicFileExists(...segments: string[]) {
+  return existsSync(join(process.cwd(), "public", ...segments));
+}
+
+const laneAssistCodingImage: ServiceImage = {
+  src: "/gallery/coding/lane-assist-arteon-r-line.jpeg",
+  alt: "Lane assist off and standard cruise control coded on a 2023 Volkswagen Arteon R-Line",
+  width: 1365,
+  height: 2048,
+  tag: "Lane Assist"
+};
+
+const defaultCodingImage: ServiceImage = {
+  src: "/gallery/coding/coding-driver-assist.jpeg",
+  alt: "Driver assist coding workflow displayed on VCDS",
+  width: 1079,
+  height: 1378,
+  tag: "Driver Assist"
+};
+
+const codingServiceImages: ServiceImage[] = publicFileExists(
+  "gallery",
+  "coding",
+  "lane-assist-arteon-r-line.jpeg"
+)
+  ? [
+      laneAssistCodingImage,
+      defaultCodingImage,
+      {
+        src: "/gallery/diagnostics/diagnostics-abs-coding-fault.jpeg",
+        alt: "Control module coding fault readout from diagnostic software",
+        width: 1079,
+        height: 1441,
+        tag: "Module Coding"
+      },
+      {
+        src: "/brand/coding-poster.jpg",
+        alt: "New Leaf Automotive coding campaign visual",
+        width: 1024,
+        height: 1416,
+        tag: "Service"
+      }
+    ]
+  : [
+      defaultCodingImage,
+      {
+        src: "/gallery/diagnostics/diagnostics-abs-coding-fault.jpeg",
+        alt: "Control module coding fault readout from diagnostic software",
+        width: 1079,
+        height: 1441,
+        tag: "Module Coding"
+      },
+      {
+        src: "/brand/coding-poster.jpg",
+        alt: "New Leaf Automotive coding campaign visual",
+        width: 1024,
+        height: 1416,
+        tag: "Service"
+      }
+    ];
 
 export const servicePages: ServicePageData[] = [
   {
@@ -230,29 +294,7 @@ export const servicePages: ServicePageData[] = [
       }
     ],
     coverage: coverageAreas,
-    images: [
-      {
-        src: "/gallery/coding/coding-driver-assist.jpeg",
-        alt: "Driver assist coding workflow displayed on VCDS",
-        width: 1079,
-        height: 1378,
-        tag: "Driver Assist"
-      },
-      {
-        src: "/gallery/diagnostics/diagnostics-abs-coding-fault.jpeg",
-        alt: "Control module coding fault readout from diagnostic software",
-        width: 1079,
-        height: 1441,
-        tag: "Module Coding"
-      },
-      {
-        src: "/brand/coding-poster.jpg",
-        alt: "New Leaf Automotive coding campaign visual",
-        width: 1024,
-        height: 1416,
-        tag: "Service"
-      }
-    ],
+    images: codingServiceImages,
     footerNote:
       "If a requested change is not listed, get in touch and we can confirm what can be done on your vehicle."
   },
