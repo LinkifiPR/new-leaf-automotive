@@ -4,11 +4,13 @@ import Link from "next/link";
 import "leaflet/dist/leaflet.css";
 import "./globals.css";
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://new-leaf-auto.netlify.app";
+
 export const metadata: Metadata = {
   title: "New Leaf Automotive | Mobile Diagnostics, Coding, and Retrofits",
   description:
     "Mobile VWAG diagnostics, coding, retrofits, pre-purchase checks, and ADAS reset support across Lincolnshire, Nottinghamshire, Derbyshire, and South Yorkshire.",
-  metadataBase: new URL("https://newleafautomotive.com"),
+  metadataBase: new URL(siteUrl),
   keywords: [
     "New Leaf Automotive",
     "mobile VAG diagnostics",
@@ -26,7 +28,7 @@ export const metadata: Metadata = {
     description:
       "Mobile diagnostics, coding, and retrofit support for VW, Audi, SEAT, and Skoda across four counties.",
     type: "website",
-    url: "https://newleafautomotive.com"
+    url: siteUrl
   },
   robots: {
     index: true,
@@ -65,6 +67,16 @@ export default function RootLayout({
           </div>
         </header>
         {children}
+        <footer className="site-legal" aria-label="Legal disclaimer">
+          <div className="site-legal-inner">
+            <p className="site-legal-title">Copyrights &amp; Trademarks</p>
+            <p className="site-legal-copy">
+              Any logos, copyrighted or trademarked materials remain the property of
+              their respective owners. We use this material solely to indicate
+              compatibility with our services.
+            </p>
+          </div>
+        </footer>
       </body>
     </html>
   );
