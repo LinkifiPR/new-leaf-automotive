@@ -72,25 +72,21 @@ const supportedBrands = [
   {
     id: "vw",
     name: "Volkswagen",
-    logo: "/brand-logos/volkswagen-10-logo-png-transparent.png",
     strapline: "VW diagnostics, coding and retrofit support."
   },
   {
     id: "audi",
     name: "Audi",
-    logo: "/brand-logos/Audi-Logo.png",
     strapline: "Module coding and fault tracing for Audi platforms."
   },
   {
     id: "seat",
     name: "SEAT",
-    logo: "/brand-logos/SEAT-Logo.png",
     strapline: "Mobile coding and retrofit work for SEAT vehicles."
   },
   {
     id: "skoda",
     name: "Skoda",
-    logo: "/brand-logos/Skoda-logo-icon-on-transparent-background-PNG.avif",
     strapline: "Skoda diagnostics and adaptation support."
   }
 ];
@@ -394,18 +390,6 @@ export default function Home() {
           {supportedBrands.map((brand) => (
             <article className={`brand-card brand-card-${brand.id}`} key={brand.name}>
               <div className="brand-card-glow" aria-hidden />
-              <div className={`brand-logo-wrap brand-logo-wrap-${brand.id}`}>
-                <div className="brand-logo-core">
-                  <Image
-                    src={brand.logo}
-                    alt={`${brand.name} logo`}
-                    width={480}
-                    height={220}
-                    className={`brand-logo-image brand-logo-image-${brand.id}`}
-                    sizes="(max-width: 700px) 80vw, (max-width: 1120px) 42vw, 22vw"
-                  />
-                </div>
-              </div>
               <h3>{brand.name}</h3>
               <p>{brand.strapline}</p>
             </article>
@@ -420,23 +404,34 @@ export default function Home() {
         </div>
 
         <div className="work-mosaic">
-          {workExamples.map((example) => (
-            <article
-              className={`work-card ${example.cardClass ?? ""}`}
-              key={example.id}
-            >
-              <Image
-                src={example.image.src}
-                alt={example.image.alt}
-                width={example.image.width}
-                height={example.image.height}
-              />
-              <div className="work-overlay">
-                <span className="work-chip">{example.category}</span>
-                <p>{example.detail}</p>
-              </div>
-            </article>
-          ))}
+          {workExamples.map((example) =>
+            example.id === "overview" ? (
+              <article className="work-card work-card-promo" key={example.id}>
+                <div className="promo-card-inner">
+                  <p className="promo-card-service">Mobile Diagnostics</p>
+                  <p className="promo-card-marques">VW &nbsp; Audi &nbsp; Skoda &nbsp; SEAT</p>
+                  <p className="promo-card-price">From <strong>£40</strong></p>
+                  <p className="promo-card-area">Covering Lincolnshire &amp; surrounding counties</p>
+                </div>
+              </article>
+            ) : (
+              <article
+                className={`work-card ${example.cardClass ?? ""}`}
+                key={example.id}
+              >
+                <Image
+                  src={example.image.src}
+                  alt={example.image.alt}
+                  width={example.image.width}
+                  height={example.image.height}
+                />
+                <div className="work-overlay">
+                  <span className="work-chip">{example.category}</span>
+                  <p>{example.detail}</p>
+                </div>
+              </article>
+            )
+          )}
         </div>
       </section>
 

@@ -1495,82 +1495,13 @@ h1 {
   transition: filter 0.24s ease, transform 0.24s ease;
 }
 
-.brand-card:hover .brand-logo-image {
-  transform: translateY(-1px) scale(1.02);
-  filter: drop-shadow(0 0 20px rgba(155, 255, 94, 0.36));
-}
-
-.brand-logo-wrap-vw .brand-logo-core,
-.brand-logo-wrap-skoda .brand-logo-core {
-  width: 122px;
-  height: 122px;
-  border-radius: 999px;
-  border: 1px solid rgba(177, 255, 103, 0.36);
-  background: radial-gradient(
-    circle at 38% 28%,
-    rgba(201, 253, 179, 0.18),
-    rgba(8, 18, 20, 0.98) 60%
-  );
-  box-shadow: inset 0 0 0 1px rgba(76, 195, 95, 0.22);
-}
-
-.brand-logo-wrap-audi .brand-logo-core {
-  width: min(94%, 248px);
-  height: 84px;
-  border-radius: 999px;
-  border: 1px solid rgba(111, 255, 212, 0.3);
-  background: radial-gradient(
-    circle at 50% 40%,
-    rgba(108, 255, 200, 0.17),
-    rgba(6, 16, 17, 0.98) 70%
-  );
-}
-
-.brand-logo-wrap-seat .brand-logo-core {
-  width: 154px;
-  height: 100px;
-  border-radius: 16px;
-  border: 1px solid rgba(190, 255, 96, 0.34);
-  background: radial-gradient(
-    circle at 48% 30%,
-    rgba(182, 250, 128, 0.18),
-    rgba(7, 16, 19, 0.98) 70%
-  );
-}
-
-.brand-logo-image-vw {
-  width: 108px;
-  height: 108px;
-}
-
-.brand-logo-image-audi {
-  width: min(90%, 220px);
-  height: 72px;
-  filter: brightness(0) invert(1) sepia(35%) hue-rotate(72deg) saturate(370%)
-    brightness(1.12) drop-shadow(0 0 18px rgba(92, 255, 203, 0.28));
-}
-
-.brand-logo-image-seat {
-  width: 120px;
-  height: 84px;
-  filter: brightness(1.2) contrast(1.08) drop-shadow(0 0 16px rgba(173, 255, 106, 0.24));
-}
-
-.brand-logo-image-skoda {
-  width: 104px;
-  height: 104px;
-  border-radius: 999px;
-  object-fit: cover;
-  mix-blend-mode: multiply;
-  filter: saturate(1.2) contrast(1.07) drop-shadow(0 0 16px rgba(171, 255, 99, 0.3));
-}
-
 .brand-card h3 {
-  margin-top: 0.58rem;
-  font-size: 0.91rem;
-  letter-spacing: 0.05em;
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
   text-transform: uppercase;
-  color: #e0ffcb;
+  color: #ffffff;
+  margin: 0;
 }
 
 .brand-card p {
@@ -1621,6 +1552,60 @@ h1 {
 .work-card-large,
 .work-card-tall {
   grid-row: span 2;
+}
+
+.work-card-promo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(
+    145deg,
+    rgba(10, 28, 14, 0.98) 0%,
+    rgba(6, 18, 10, 0.99) 100%
+  );
+  border: 1px solid rgba(163, 255, 106, 0.3);
+}
+
+.promo-card-inner {
+  padding: 1rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.promo-card-service {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #9eff45;
+  margin: 0;
+}
+
+.promo-card-marques {
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #ffffff;
+  margin: 0;
+}
+
+.promo-card-price {
+  font-size: 0.75rem;
+  color: #c8e8c0;
+  margin: 0.1rem 0 0;
+}
+
+.promo-card-price strong {
+  color: #9eff45;
+  font-size: 1rem;
+}
+
+.promo-card-area {
+  font-size: 0.65rem;
+  color: #7aaa80;
+  margin: 0.1rem 0 0;
+  line-height: 1.3;
 }
 
 .work-card img {
