@@ -384,10 +384,10 @@ export const servicePages: ServicePageData[] = [
         tag: "Installation"
       },
       {
-        src: "/brand/service-overview.jpg",
-        alt: "Overview visual of New Leaf Automotive retrofit and coding services",
-        width: 1536,
-        height: 1024,
+        src: "/brand/service-overview.webp",
+        alt: "Mobile diagnostics for VW, Audi, Skoda and SEAT from £40, covering the Lincolnshire area",
+        width: 1078,
+        height: 702,
         tag: "Overview"
       }
     ],

@@ -226,10 +226,10 @@ const workExamples = [
   {
     id: "overview",
     image: {
-      src: "/brand/service-overview.jpg",
-      alt: "Overview visual of New Leaf Automotive services",
-      width: 1536,
-      height: 1024
+      src: "/brand/service-overview.webp",
+      alt: "Mobile diagnostics for VW, Audi, Skoda and SEAT from £40, covering the Lincolnshire area",
+      width: 1078,
+      height: 702
     },
     category: "Service Coverage",
     detail: "Mobile VWAG specialist support"
@@ -404,34 +404,23 @@ export default function Home() {
         </div>
 
         <div className="work-mosaic">
-          {workExamples.map((example) =>
-            example.id === "overview" ? (
-              <article className="work-card work-card-promo" key={example.id}>
-                <div className="promo-card-inner">
-                  <p className="promo-card-service">Mobile Diagnostics</p>
-                  <p className="promo-card-marques">VW &nbsp; Audi &nbsp; Skoda &nbsp; SEAT</p>
-                  <p className="promo-card-price">From <strong>£40</strong></p>
-                  <p className="promo-card-area">Covering Lincolnshire &amp; surrounding counties</p>
-                </div>
-              </article>
-            ) : (
-              <article
-                className={`work-card ${example.cardClass ?? ""}`}
-                key={example.id}
-              >
-                <Image
-                  src={example.image.src}
-                  alt={example.image.alt}
-                  width={example.image.width}
-                  height={example.image.height}
-                />
-                <div className="work-overlay">
-                  <span className="work-chip">{example.category}</span>
-                  <p>{example.detail}</p>
-                </div>
-              </article>
-            )
-          )}
+          {workExamples.map((example) => (
+            <article
+              className={`work-card ${example.cardClass ?? ""}`}
+              key={example.id}
+            >
+              <Image
+                src={example.image.src}
+                alt={example.image.alt}
+                width={example.image.width}
+                height={example.image.height}
+              />
+              <div className="work-overlay">
+                <span className="work-chip">{example.category}</span>
+                <p>{example.detail}</p>
+              </div>
+            </article>
+          ))}
         </div>
       </section>
 
